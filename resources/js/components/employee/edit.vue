@@ -13,22 +13,20 @@
               <div class="col-lg-12">
                 <div class="login-form">
                   <div class="text-center">
-                    <h1 class="h4 text-gray-900 mb-4">Add Employee</h1>
+                    <h1 class="h4 text-gray-900 mb-4"> Employee Update</h1>
                   </div>
-                  <form class="user" @submit.prevent="employeeInsert" enctype="multipart/form-data">
+                  <form class="user" @submit.prevent="employeeUpdate" enctype="multipart/form-data">
                     <div class="form-group">
                       <div class="form-row">
                            <div class="col-md-6">
 
-                                <input type="text" class="form-control" v-model="form.name" 
+                                <input type="text" class="form-control" id="" v-model="form.name" 
                                 placeholder="Enter Your Full Name">
-                                <small class="text-danger" v-if="errors.name">{{ errors.name[0] }}</small>
                             </div> 
                             <div class="col-md-6">
 
-                                <input type="email" class="form-control" v-model="form.email" 
+                                <input type="email" class="form-control" id="" v-model="form.email" 
                                 placeholder="Enter Your Email">
-                                <small class="text-danger" v-if="errors.email">{{ errors.email[0] }}</small>
                             </div> 
 
                             
@@ -39,15 +37,13 @@
                       <div class="form-row">
                            <div class="col-md-6">
 
-                                <input type="text" class="form-control" v-model="form.address" 
+                                <input type="text" class="form-control" id="" v-model="form.address" 
                                 placeholder="Enter Your Address">
-                                <small class="text-danger" v-if="errors.address">{{ errors.address[0] }}</small>
                             </div> 
                             <div class="col-md-6">
 
-                                <input type="text" class="form-control" v-model="form.salary" 
+                                <input type="text" class="form-control" id="" v-model="form.salary" 
                                 placeholder="Enter Your Salary">
-                                <small class="text-danger" v-if="errors.salary">{{ errors.salary[0] }}</small>
                             </div> 
 
                             
@@ -58,13 +54,12 @@
                       <div class="form-row">
                            <div class="col-md-6">
 
-                                <input type="date" class="form-control" v-model="form.joining_date" 
+                                <input type="date" class="form-control" id="" v-model="form.joining_date" 
                                 placeholder="dd/mm/yyyy">
-                                <small class="text-danger" v-if="errors.joining_date">{{ errors.joining_date[0] }}</small>
                             </div> 
                             <div class="col-md-6">
 
-                                <input type="text" class="form-control" v-model="form.nid" 
+                                <input type="text" class="form-control" id="" v-model="form.nid" 
                                 placeholder="Enter Your Nid">
                             </div> 
 
@@ -77,9 +72,8 @@
                       <div class="form-row">
                            <div class="col-md-6">
 
-                                <input type="text" class="form-control" v-model="form.phone" 
+                                <input type="text" class="form-control" id="" v-model="form.phone" 
                                 placeholder="Enter Your Phone Number">
-                                <small class="text-danger" v-if="errors.phone">{{ errors.phone[0] }}</small>
                             </div> 
                             
                       </div>
@@ -95,13 +89,13 @@
 
                             <div class="col-md-6">
 
-                                <img :src="form.photo" style="height:40px; with:40px"/>
+                                <img :src="form.newphoto" style="height:40px; with:40px"/>
                             </div> 
                         </div>
                     </div>
 
                     <div class="form-group">
-                      <button type="submit" class="btn btn-primary btn-block">Submit</button>
+                      <button type="submit" class="btn btn-primary btn-block">Update</button>
                     </div>
                     <hr>
                     
@@ -130,17 +124,24 @@ export default {
   data(){
       return{
         form:{
-          name: null,
-          email: null,
-          phone: null,
-          salary: null,
-          address: null,
-          photo: null,
-          joining_date: null,
-          nid: null,
+          name: '',
+          email: '',
+          phone: '',
+          salary: '',
+          address: '',
+          photo: '',
+          newphoto: '',
+          joining_date: '',
+          nid: '',
         },
         errors:{}
       }
+  },
+  created(){
+      let id = this.$route.params.id
+      axios.get('/api/employee/' + id)
+      .then(({data}) => (this.form = data))
+      .catch(console.log('error'));
   },
   methods:{
       onFileSelected(event){
@@ -150,26 +151,19 @@ export default {
           } else {
               let reader = new FileReader();
               reader.onload = event => {
-                  this.form.photo = event.target.result
-                  console.log(event.target.result);
+                  this.form.newphoto = event.target.result
               }
               reader.readAsDataURL(file);
           }
       },
-    employeeInsert(){
-      
-        axios.post('/api/employee', this.form)
+    employeeUpdate(){
+        let id = this.$route.params.id
+        axios.patch('/api/employee/' + id, this.form)
         .then(() => {
             this.$router.push({name: 'employee'})
             Notification.success()
         })
         .catch(error => this.errors = error.response.data.errors)
-        .catch(
-            Toast.fire({
-              icon: 'warning',
-              title: 'Invalid Data Input!!'
-            })
-          )
     },
   }
 }
