@@ -13,6 +13,13 @@ let storeemployee = require('./components/employee/create.vue').default;
 let employee = require('./components/employee/index.vue').default;
 let editemployee = require('./components/employee/edit.vue').default;
 
+//Supplier Component
+let storesupplier = require('./components/supplier/create.vue').default;
+let supplier = require('./components/supplier/index.vue').default;
+
+//Category Component
+let storecategory = require('./components/category/create.vue').default;
+let category = require('./components/category/index.vue').default;
 
 
 export const routes = [
@@ -27,5 +34,13 @@ export const routes = [
   { path: '/employee', component: employee, name: 'employee' },
   { path: '/edit-employee/:id', component: editemployee, name: 'edit-employee' },
 
+  //Supplier Routes
   
+  { path: '/store-supplier', component: storesupplier, name: '/store-supplier' },
+  { path: '/supplier', component: supplier, name: 'supplier' },
+
+   //Category Routes
+  
+   { path: '/store-category', component: storecategory, name: '/store-category' },
+   { path: '/category', component: category, name: 'category' },
 ]

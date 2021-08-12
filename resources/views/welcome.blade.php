@@ -71,6 +71,23 @@
           </div>
         </li>
 
+        <li class="nav-item">
+          <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseBootstrap1"
+            aria-expanded="true" aria-controls="collapseBootstrap1">
+            <i class="far fa-fw fa-window-maximize"></i>
+            <span>Category</span>
+          </a>
+          <div id="collapseBootstrap1" class="collapse" aria-labelledby="headingBootstrap" data-parent="#accordionSidebar">
+            <div class="bg-white py-2 collapse-inner rounded">
+              <h6 class="collapse-header">Suppliers</h6>
+              <router-link class="collapse-item" to="/store-supplier">Add Category</router-link>
+              <router-link class="collapse-item" to="/supplier">All Categories</router-link>
+              
+            </div>
+          </div>
+        </li>
+
+
 
         <li class="nav-item">
           <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseForm" aria-expanded="true"

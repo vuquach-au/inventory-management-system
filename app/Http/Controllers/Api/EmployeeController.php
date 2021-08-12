@@ -39,7 +39,6 @@ class EmployeeController extends Controller
      */
     public function store(Request $request)
     {
-        echo "storing data......";
         $validateData = $request->validate([
             'name' => 'required|unique:employees|max:255',
             'email' => 'required',
