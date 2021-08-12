@@ -84,19 +84,11 @@ class SupplierController extends Controller
      */
     public function show($id)
     {
+        $supplier = DB::table('suppliers')->where('id', $id)->first();
+        return response()->json($supplier);
         //
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
 
     /**
      * Update the specified resource in storage.
@@ -107,7 +99,35 @@ class SupplierController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $data = array();
+        $data['name'] = $request->name;
+        $data['email'] = $request->email;
+        $data['phone'] = $request->phone;
+        $data['address'] = $request->address;
+        $data['shopname'] = $request->shopname;
+
+        $image = $request->newphoto;
+        if($image){
+
+            $pos = strpos($image, ';');
+            $sub = substr($image, 0, $pos);
+            $ext = explode("/", $sub)[1];
+            $image_name = time().".".$ext;
+            $new_image = Image::make($image)->resize(240,200);
+            
+            $upload_path = "backend/supplier/";
+            $image_url = $upload_path.$image_name;
+            $success = $new_image->save($image_url);
+            if($success){
+                $data['photo'] = $image_url;
+                $old_image = DB::table('suppliers')->where('id', $id)->first();
+
+                unlink($old_image->photo);
+            }
+        } 
+        DB::table('suppliers')->where('id', $id)->update($data);
+        
+
     }
 
     /**

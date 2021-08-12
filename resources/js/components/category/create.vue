@@ -18,11 +18,11 @@
                   <form class="user" @submit.prevent="supplierInsert" >
                     <div class="form-group">
                       <div class="form-row">
-                           <div class="col-md-6">
+                           <div class="col-md-12">
 
-                                <input type="text" class="form-control" v-model="form.name" 
-                                placeholder="Enter Supplier's Name">
-                                <small class="text-danger" v-if="errors.name">{{ errors.name[0] }}</small>
+                                <input type="text" class="form-control" v-model="form.category_name" 
+                                placeholder="Enter Your Category Name">
+                                <small class="text-danger" v-if="errors.category_name">{{ errors.category_name[0] }}</small>
                             </div> 
                             
 
