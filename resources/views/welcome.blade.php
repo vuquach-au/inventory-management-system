@@ -72,34 +72,16 @@
         </li>
 
         <li class="nav-item">
-          <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseBootstrap1"
-            aria-expanded="true" aria-controls="collapseBootstrap1">
-            <i class="far fa-fw fa-window-maximize"></i>
-            <span>Category</span>
-          </a>
-          <div id="collapseBootstrap1" class="collapse" aria-labelledby="headingBootstrap" data-parent="#accordionSidebar">
-            <div class="bg-white py-2 collapse-inner rounded">
-              <h6 class="collapse-header">Suppliers</h6>
-              <router-link class="collapse-item" to="/store-supplier">Add Category</router-link>
-              <router-link class="collapse-item" to="/supplier">All Categories</router-link>
-              
-            </div>
-          </div>
-        </li>
-
-
-
-        <li class="nav-item">
           <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseForm" aria-expanded="true"
             aria-controls="collapseForm">
             <i class="fab fa-fw fa-wpforms"></i>
-            <span>Forms</span>
+            <span>Category</span>
           </a>
           <div id="collapseForm" class="collapse" aria-labelledby="headingForm" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
-              <h6 class="collapse-header">Forms</h6>
-              <a class="collapse-item" href="form_basics.html">Form Basics</a>
-              <a class="collapse-item" href="form_advanceds.html">Form Advanceds</a>
+              <h6 class="collapse-header">Category</h6>
+              <router-link class="collapse-item" to="/store-category">Add Category</router-link>
+              <router-link class="collapse-item" to="/category">All Categories</router-link>
             </div>
           </div>
         </li>
@@ -107,13 +89,13 @@
           <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTable" aria-expanded="true"
             aria-controls="collapseTable">
             <i class="fas fa-fw fa-table"></i>
-            <span>Tables</span>
+            <span>Products</span>
           </a>
           <div id="collapseTable" class="collapse" aria-labelledby="headingTable" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
-              <h6 class="collapse-header">Tables</h6>
-              <a class="collapse-item" href="simple-tables.html">Simple Tables</a>
-              <a class="collapse-item" href="datatables.html">DataTables</a>
+              <h6 class="collapse-header">Products</h6>
+              <router-link class="collapse-item" to="/store-product">Add Product</router-link>
+              <router-link class="collapse-item" to="/product">All Products</router-link>
             </div>
           </div>
         </li>
@@ -153,6 +135,8 @@
         <div class="version" id="version-ruangadmin"></div>
       </ul>
     </nav>
+
+    
 
     <!-- Sidebar -->
     <div id="content-wrapper" class="d-flex flex-column">
@@ -353,7 +337,17 @@
         </div>
         <!---Container Fluid-->
       </div>
-      
+      <!-- Footer -->
+    <footer class="sticky-footer bg-white">
+        <div class="container my-auto">
+          <div class="copyright text-center my-auto">
+            <span>copyright &copy; <script> document.write(new Date().getFullYear()); </script> - developed by
+              <b><a href="https://github.com/vuquach-au/inventory-management-system" target="_blank">Vu Quach</a></b>
+            </span>
+          </div>
+        </div>
+      </footer>
+      <!-- Footer -->
     </div>
   </div>
   </div>

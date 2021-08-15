@@ -2,7 +2,7 @@
     <div>
 
         <div class="row">
-            <router-link to="/category" class="btn btn-info">All Category</router-link>
+            <router-link to="/supplier" class="btn btn-info">All Category</router-link>
         </div>
 
         <div class="row justify-content-center">
@@ -13,25 +13,24 @@
               <div class="col-lg-12">
                 <div class="login-form">
                   <div class="text-center">
-                    <h1 class="h4 text-gray-900 mb-4">Add Category</h1>
+                    <h1 class="h4 text-gray-900 mb-4">Category Update</h1>
                   </div>
-                  <form class="user" @submit.prevent="categoryInsert" >
+                  <form class="user" @submit.prevent="categoryUpdate" enctype="multipart/form-data">
                     <div class="form-group">
                       <div class="form-row">
                            <div class="col-md-12">
 
-                                <input type="text" class="form-control" v-model="form.category_name" 
-                                placeholder="Enter Your Category Name">
-                                
+                                <input type="text" class="form-control" id="" v-model="form.category_name" 
+                                placeholder="Enter Your Supplier's Name">
                             </div> 
                             
 
                             
                       </div>
                     </div>
-                    
+
                     <div class="form-group">
-                      <button type="submit" class="btn btn-primary btn-block">Submit</button>
+                      <button type="submit" class="btn btn-primary btn-block">Update</button>
                     </div>
                     <hr>
                     
@@ -60,28 +59,28 @@ export default {
   data(){
       return{
         form:{
-          category_name: null,
+          category_name: '',
           
         },
         errors:{}
       }
   },
+  created(){
+      let id = this.$route.params.id
+      axios.get('/api/category/' + id)
+      .then(({data}) => (this.form = data))
+      .catch(console.log('error'));
+  },
   methods:{
       
-    categoryInsert(){
-        axios.post('/api/category', this.form)
-        .then((res) =>{
-            console.log(res.data)
+    categoryUpdate(){
+        let id = this.$route.params.id
+        axios.patch('/api/category/' + id, this.form)
+        .then(() => {
             this.$router.push({name: 'category'})
-            Notification.success();
+            Notification.success()
         })
         .catch(error => this.errors = error.response.data.errors)
-        .catch(
-            Toast.fire({
-              icon: 'warning',
-              title: 'Invalid Data Input!!'
-            })
-          )
     },
   }
 }
