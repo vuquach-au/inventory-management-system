@@ -99,6 +99,38 @@
             </div>
           </div>
         </li>
+
+        <li class="nav-item">
+          <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseExpense" aria-expanded="true"
+            aria-controls="collapseExpense">
+            <i class="fas fa-fw fa-table"></i>
+            <span>Expenses</span>
+          </a>
+          <div id="collapseExpense" class="collapse" aria-labelledby="headingTable" data-parent="#accordionSidebar">
+            <div class="bg-white py-2 collapse-inner rounded">
+              <h6 class="collapse-header">Products</h6>
+              <router-link class="collapse-item" to="/store-expense">Add Expense</router-link>
+              <router-link class="collapse-item" to="/expense">All Expenses</router-link>
+            </div>
+          </div>
+        </li>
+
+
+        <li class="nav-item">
+          <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseSalary" aria-expanded="true"
+            aria-controls="collapseSalary">
+            <i class="fas fa-fw fa-table"></i>
+            <span>Salary</span>
+          </a>
+          <div id="collapseSalary" class="collapse" aria-labelledby="headingTable" data-parent="#accordionSidebar">
+            <div class="bg-white py-2 collapse-inner rounded">
+              <h6 class="collapse-header">Products</h6>
+              <router-link class="collapse-item" to="/given-salary">Add Salary</router-link>
+              <router-link class="collapse-item" to="/salary">All Salary</router-link>
+            </div>
+          </div>
+        </li>
+
         <li class="nav-item">
           <a class="nav-link" href="ui-colors.html">
             <i class="fas fa-fw fa-palette"></i>
@@ -341,7 +373,7 @@
     <footer class="sticky-footer bg-white">
         <div class="container my-auto">
           <div class="copyright text-center my-auto">
-            <span>copyright &copy; <script> document.write(new Date().getFullYear()); </script> - developed by
+            <span>copyright &copy; 2021 - developed by
               <b><a href="https://github.com/vuquach-au/inventory-management-system" target="_blank">Vu Quach</a></b>
             </span>
           </div>
